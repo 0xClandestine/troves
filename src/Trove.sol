@@ -4,6 +4,10 @@ pragma solidity 0.8.23;
 import "solady/src/utils/SafeTransferLib.sol";
 import "src/FiatShamirLib.sol";
 
+/**
+ * @title Trove Contract
+ * @notice This contract represents a Trove and provides functionality to open it using Fiat-Shamir zero-knowledge proofs.
+ */
 contract Trove {
     /// -----------------------------------------------------------------------
     /// Errors
@@ -15,13 +19,27 @@ contract Trove {
     /// Immutables
     /// -----------------------------------------------------------------------
 
+    /**
+     * @notice The prime number used in the Trove contract.
+     */
     uint256 public immutable prime;
 
+    /**
+     * @notice The generator used in the Trove contract.
+     */
     uint256 public immutable generator;
 
-    /// @notice
+    /**
+     * @notice The public key used in the Trove contract.
+     */
     uint256 public immutable pubKey;
 
+    /**
+     * @notice Initializes the Trove contract with the specified parameters.
+     * @param n The prime number.
+     * @param g The generator.
+     * @param y The public key.
+     */
     constructor(uint256 n, uint256 g, uint256 y) {
         prime = n;
         generator = g;
